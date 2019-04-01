@@ -11,10 +11,16 @@ import javax.swing.Icon
 
 class EmojiMapping {
 
-    var map = HashMap<String, EmojiData>()
+    private var map = HashMap<String, EmojiData>()
     val actions: MutableSet<String>
 
-    constructor() {
+    init {
+        enMap()
+        cnMap()
+        this.actions = map.keys
+    }
+
+    private fun enMap() {
         map["Improving structure / format of the code."] = EmojiData("art")
         map["Improving performance."] = EmojiData("zap")
         map["Removing code or files."] = EmojiData("fire")
@@ -70,10 +76,12 @@ class EmojiMapping {
         map["Making architectural changes."] = EmojiData("building_construction")
         map["Working on responsive design."] = EmojiData("iphone")
         map["Mocking things."] = EmojiData("clown_face")
-        map["Adding an easter egg."]  = EmojiData("egg")
-        map["Adding or updating a .gitignore file."]  = EmojiData("see_no_evil")
-        map["Adding or updating snapshots."]  = EmojiData("camera_flash")
+        map["Adding an easter egg."] = EmojiData("egg")
+        map["Adding or updating a .gitignore file."] = EmojiData("see_no_evil")
+        map["Adding or updating snapshots."] = EmojiData("camera_flash")
+    }
 
+    private fun cnMap() {
         map["改进结构和代码格式"] = EmojiData("art")
         map["优化性能"] = EmojiData("zap")
         map["移除代码或文件"] = EmojiData("fire")
@@ -129,18 +137,16 @@ class EmojiMapping {
         map["架构调整"] = EmojiData("building_construction")
         map["响应式设计"] = EmojiData("iphone")
         map["模拟数据"] = EmojiData("clown_face")
-        map["添加一个彩蛋"]  = EmojiData("egg")
-        map["添加或更新 .gitignore 文件"]  = EmojiData("see_no_evil")
-        map["添加或更新快照"]  = EmojiData("camera_flash")
-
-        this.actions = map.keys
+        map["添加一个彩蛋"] = EmojiData("egg")
+        map["添加或更新 .gitignore 文件"] = EmojiData("see_no_evil")
+        map["添加或更新快照"] = EmojiData("camera_flash")
     }
 
-    fun getText(action:String): String? {
+    fun getText(action: String): String? {
         return this.map[action]!!.emojiText
     }
 
-    fun getIcon(action:String): Icon? {
+    fun getIcon(action: String): Icon? {
         return this.map[action]!!.icon
     }
 

@@ -9,13 +9,12 @@ import javax.swing.Icon
  * @author biezhi
  * @date 2017/12/30
  */
-class EmojiData {
+class EmojiData(emojiText: String) {
 
-    val emojiText: String?
+    val emojiText: String? = emojiText
     var icon: Icon
 
-    constructor(emojiText: String) {
-        this.emojiText = emojiText
+    init {
         try {
             this.icon = IconLoader.getIcon("/icons/$emojiText.png")
         } catch (e: Exception){
